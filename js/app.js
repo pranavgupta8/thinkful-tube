@@ -11,22 +11,9 @@ $(function(){
 
 	});
 
-	$('button').click(function(){
-		
-		if ($('#next').click()) {
-			page = nextPage;
-			getRequest();
-		}
-
-		else if ($('#prev').click()){
-			page = prevPage;
-			getRequest();
-		}
-	});
 });
 
-var searchTerm = "";
-var page = "";
+var searchTerm = "";;var page = "";
 var nextPage = "";
 var prevPage = "";
 
@@ -37,15 +24,16 @@ function getRequest() {
 		key: 'AIzaSyCG21WU-MRCDS_GG6QzS89twkWP9aYN6g0',
 		q: searchTerm,
 		maxResults: 8,
-		pagetoken: page
+		pageToken: page
 	};
 	url = 'https://www.googleapis.com/youtube/v3/search';
 	
 	$.getJSON(url, params, function(data){
 			
-		nextPage = data.items.nextPageToken;
-		prevPage = data.items.prevPageToken;
-
+		nextPage = data.nextPageToken;
+		prevPage = data.prevPageToken;
+		console.log(nextPage);
+		console.log(prevPage);
 		showResults(data.items);
 
 		$('img')
@@ -55,6 +43,18 @@ function getRequest() {
 		.click(function(){
 		
 			watch(this.id);
+		});
+
+		$('#next').click(function() {
+		
+			page = nextPage;
+			getRequest();
+		});
+
+		$('#prev').click(function() {
+		
+			page = prevPage;
+			getRequest();
 		});
 
 		$('#toggle').show();
