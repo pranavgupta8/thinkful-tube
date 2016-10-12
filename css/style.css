@@ -1,13 +1,13 @@
 body {
-	background-color: white;
+	background-color: whitesmoke;
 	width: 100%;
 	font-family: "Josefin Sans", sans-serif;
 }
 
 #search-box {
 	margin: 0 auto;
-	padding: 2em 4em;
 	width: 26em;
+	padding: 2em 4em;
 	background-color: crimson;
 	box-sizing: border-box;
 	border-radius: 1em;
@@ -26,6 +26,24 @@ h2 {
 }
 #search-results {
 	margin: 0 auto;
-	width: 30em;
+	width: 20em;
 	padding: 1em 0em;	
+}
+
+#toggle {
+	margin: 0 auto;
+	width: 7.3em;
+}
+
+button {
+	display: inline-block;
+	font-family: "Josefin Sans", sans-serif;
+	font-size: 1em;
+	padding: 0.4em 0.4em;
+	background-color: black;
+	color: white;
+	box-sizing: border-box;
+	border-radius: 0.4em;
+	border: 1px black solid;
+	cursor: pointer;
 }
