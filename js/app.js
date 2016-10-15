@@ -13,7 +13,8 @@ $(function(){
 
 });
 
-var searchTerm = "";;var page = "";
+var searchTerm = "";
+var page = "";
 var nextPage = "";
 var prevPage = "";
 
@@ -40,9 +41,11 @@ function getRequest() {
 
 		.css('cursor', 'pointer')
 		.css('margin', '1em 0em')
+		.attr('href', 'https://www.youtube.com/watch?v=' + this.id)
 		.click(function(){
 		
-			watch(this.id);
+			/*watch(this.id);*/
+			$('.fancybox').fancybox();
 		});
 
 		$('#next').click(function() {
@@ -67,7 +70,7 @@ function showResults(results) {
 	
 	$.each(results, function(index, value){
 		
-		html += '<img src="' + value.snippet.thumbnails.medium.url + '" id="' + value.id.videoId + '"><br>'
+		html += '<img src="' + value.snippet.thumbnails.medium.url + '" id="' + value.id.videoId + '" class="fancybox"><br>'
 		console.log(value.snippet.thumbnails.high.url);
 	});
 	console.log(html);
@@ -77,7 +80,7 @@ function showResults(results) {
 function watch(id) {
 
 	console.log(id);
-	location.href = 'https://www.youtube.com/watch?v=' + id;
-	window.open(location.href);
-	/*$('#'+ id).attr('href', watchUrl);*/
+	window.location.href = 'https://www.youtube.com/watch?v=' + id;
+	window.open(location.href, '_blank');
+	/*$('#'+ id).attr('href', watchUrl);*/	
 }
