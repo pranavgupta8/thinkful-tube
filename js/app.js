@@ -11,6 +11,8 @@ $(function(){
 
 	});
 
+	$('.fancybox').fancybox();
+
 });
 
 var searchTerm = "";
@@ -37,15 +39,17 @@ function getRequest() {
 		console.log(prevPage);
 		showResults(data.items);
 
+		
+
 		$('img')
 
 		.css('cursor', 'pointer')
 		.css('margin', '1em 0em')
-		.attr('href', 'https://www.youtube.com/watch?v=' + this.id)
+		//.attr('href', 'https://www.youtube.com/watch?v=' + this.id)
 		.click(function(){
 		
 			/*watch(this.id);*/
-			$('.fancybox').fancybox();
+			//$('this').fancybox();
 		});
 
 		$('#next').click(function() {
@@ -70,7 +74,8 @@ function showResults(results) {
 	
 	$.each(results, function(index, value){
 		
-		html += '<img src="' + value.snippet.thumbnails.medium.url + '" id="' + value.id.videoId + '" class="fancybox"><br>'
+		thumbnail = '<img src="' + value.snippet.thumbnails.medium.url + '" id="' + value.id.videoId + '"><br>'
+		html += '<a href =' + '"https://www.youtube.com/v/' + value.id.videoId + '" class="fancybox fancybox.iframe" rel="gallery">' + thumbnail + '</a>'
 		console.log(value.snippet.thumbnails.high.url);
 	});
 	console.log(html);
