@@ -8,10 +8,7 @@ $(function(){
 		searchTerm = $('#query').val();
 	
 		getRequest();//asynchronous
-
 	});
-
-	$('.fancybox').fancybox();
 
 });
 
@@ -35,23 +32,16 @@ function getRequest() {
 			
 		nextPage = data.nextPageToken;
 		prevPage = data.prevPageToken;
-		console.log(nextPage);
-		console.log(prevPage);
+
 		showResults(data.items);
 
-		
+		$('.fancybox').fancybox();
 
 		$('img')
 
 		.css('cursor', 'pointer')
-		.css('margin', '1em 0em')
-		//.attr('href', 'https://www.youtube.com/watch?v=' + this.id)
-		.click(function(){
+		.css('margin', '1em 0em');
 		
-			/*watch(this.id);*/
-			//$('this').fancybox();
-		});
-
 		$('#next').click(function() {
 		
 			page = nextPage;
@@ -76,9 +66,8 @@ function showResults(results) {
 		
 		thumbnail = '<img src="' + value.snippet.thumbnails.medium.url + '" id="' + value.id.videoId + '"><br>'
 		html += '<a href =' + '"https://www.youtube.com/v/' + value.id.videoId + '" class="fancybox fancybox.iframe" rel="gallery">' + thumbnail + '</a>'
-		console.log(value.snippet.thumbnails.high.url);
 	});
-	console.log(html);
+	
 	$('#search-results').html(html);
 }
 
@@ -86,6 +75,5 @@ function watch(id) {
 
 	console.log(id);
 	window.location.href = 'https://www.youtube.com/watch?v=' + id;
-	window.open(location.href, '_blank');
-	/*$('#'+ id).attr('href', watchUrl);*/	
+	window.open(location.href, '_blank');	
 }
